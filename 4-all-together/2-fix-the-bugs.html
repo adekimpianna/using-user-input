@@ -22,21 +22,22 @@
        * @returns {number}
        */
     function sumAllEvens(lowest, highest) {
+      debugger;
       if (typeof lowest !== 'number') { throw new TypeError(); }
       if (typeof highest !== 'number') { throw new TypeError(); }
 
       let sumOfEvens = 0;
-      for (let i = lowest; i === highest; i++) {
-        if (i % 2 !== 0) {
-          continue;
+      for (let i = lowest; i < highest; i++) {
+        if ((i % 2) !== 0) {
+           continue;
         }
-
-        sumOfEvens + i;
+        sumOfEvens += i;
       }
 
-      if (typeof sum !== 'boolean') { throw new TypeError() };
-      return sum;
+      if (typeof sumOfEvens !== 'number') { throw new TypeError() };
+      return sumOfEvens;
     }
+
   </script>
 
   <script id='tests'>
@@ -69,12 +70,23 @@
       debugger;
 
       const input1 = prompt('first number');
-      const num1 = input1;
+      const num1 = Number(input1);
 
       const input2 = prompt('second number');
-      const num2 = input2;
+      const num2 = Number(input2);
 
-      const sum = sumAllEvens(num2, num1);
+       
+      let lowest = 0;
+      let high = 0;
+      if (num1 > num2) {
+        lowest = num2;
+        highest = num1;
+      } else {
+        lowest = num1;
+        highest = num2
+      }
+
+      const sum = sumAllEvens(lowest, highest);
 
       alert(sum);
 
